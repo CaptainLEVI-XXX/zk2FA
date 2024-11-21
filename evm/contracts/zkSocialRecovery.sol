@@ -12,9 +12,7 @@ interface IHashCheckVerifier {
         returns (bool);
 }
 
-/// @title ZkSocialRecoveryWallet
-/// @notice You can use this contract for providing 2 factor authentication and social recovery
-/// @dev All function calls are currently implemented without side effects
+
 contract ZkSocialRecoveryWallet is IERC721Receiver, OtpValidator {
     /// Address of hash check verifier
     address hashCheckVerifier;
@@ -122,10 +120,7 @@ contract ZkSocialRecoveryWallet is IERC721Receiver, OtpValidator {
         thresholdForRecovery = _thresholdForRecovery;
     }
 
-    /**
-     * @notice Set the trustees of a wallet after deployment
-     * @param _trustees the list of trustee addresses
-     */
+  
     function setTrustees(address[] memory _trustees) external isOwner {
         for (uint256 i = 0; i < _trustees.length; i++) {
             require(!Trustee[_trustees[i]], "Duplicate trustee in list");

@@ -21,9 +21,9 @@ template HashLeaves() {
 // Slightly optimized Merkle Tree Inclusion Verification
 template MerkleTreeInclusionVerification(n) {
     // Input signals with clear naming
-    signal input time;
-    signal input otp;
-    signal input pathElements[n];
+    signal input time;   // current timestamp
+    signal input otp;    // one time passwords from the user
+    signal input pathElements[n];  // this can be get via browser or IPFS/ Decentralized storage
     signal input pathIndex[n];
     
     // Output root signal
@@ -49,7 +49,7 @@ template MerkleTreeInclusionVerification(n) {
     for(var i = 0; i < n; i++) {
         // Strict binary path index constraint
         // Ensure path index is either 0 or 1
-        pathIndex[i] * (1 - pathIndex[i]) === 0;
+        pathIndex[i] * (1 - pathIndex[i]) === 0;    // check for binary
         
         // Initialize hash and multiplexer components
         h[i] = HashLeaves();
