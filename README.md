@@ -1,4 +1,4 @@
-# ZK Authentication System Documentation
+# 2factor Authentication
 
 ## Table of Contents
 1. [Overview](#overview)
